@@ -5,7 +5,8 @@ export const ProductContext = createContext();
 const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [filterProducts, setFilterProducts] = useState([]);
-  const [theme, setTheme] = useState("Light");
+  const[filterName,setFilterName] = useState("Newest");
+  const [theme, setTheme] = useState("Dark");
   const [category, setCategory] = useState("all");
   useEffect(() => {
     getProducts();
@@ -43,10 +44,37 @@ const ProductProvider = ({ children }) => {
       setFilterProducts(filtered);
     }
   };
+
+
+
+const sortedProducts = [...filterProducts].sort((a, b) => {
+  if (filterName === "A-Z") {
+    return a.title.localeCompare(b.title);
+  }
+  if (filterName === "Z-A") {
+    return b.title.localeCompare(a.title);
+  }
+  if (filterName === "Price: Low to High") {
+    return a.price - b.price;
+  }
+  if (filterName === "Price: High to Low") {
+    return b.price - a.price;
+  }
+  if (filterName === "Rating") {
+    return b.rating.rate - a.rating.rate;
+  }
+  return 0; // default (Newest)
+});
+
+
+
   return (
     <ProductContext.Provider
       value={{
         filterProducts,
+        sortedProducts,
+        filterName,
+        setFilterName,
         handleSearch,
         products,
         toggleTheme,

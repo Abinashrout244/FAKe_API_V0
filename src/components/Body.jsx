@@ -1,20 +1,19 @@
 import React, { useContext } from "react";
 import Main from "./Main";
-import Button from "./Button";
 import { ProductContext } from "../utils/ProductContext";
 
 const Body = () => {
   const { theme } = useContext(ProductContext);
+  const isDark = theme === "Dark";
+  
   return (
-    <div
-      className={`flex flex-col gap-5 justify-center items-center  ${
-        theme == "Light" ? "bg-white" : "bg-slate-900"
-      }`}
-    >
-      <Button />
+    <div className={`min-h-screen transition-colors duration-700 ${
+      isDark ? "bg-[#080c0a]" : "bg-white"
+    }`}>
       <Main />
     </div>
   );
 };
 
 export default Body;
+
