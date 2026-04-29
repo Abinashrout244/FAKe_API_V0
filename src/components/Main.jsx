@@ -14,7 +14,7 @@ const Main = () => {
   const isDark = theme === "Dark";
 
   return (
-    <div className="relative min-h-screen pt-32 pb-20 px-4 md:px-12 overflow-hidden">
+    <div className="relative min-h-screen pt-32 pb-20 px-6 md:px-12 overflow-hidden">
       {/* Cinematic Ambient Glows */}
       <div
         className={`fixed top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full blur-[120px] pointer-events-none transition-colors duration-1000 ${
@@ -54,8 +54,9 @@ const Main = () => {
           <Shimmer />
         ) : (
           <div
-            className="grid gap-x-4 gap-y-10 md:gap-x-8 md:gap-y-16 
-            grid-cols-2 
+            className="grid gap-x-8 gap-y-16 
+            grid-cols-1 
+            sm:grid-cols-2 
             lg:grid-cols-3 
             xl:grid-cols-4 
             justify-items-center"
