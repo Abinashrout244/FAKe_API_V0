@@ -71,8 +71,8 @@ const ProductPage = () => {
   };
 
   const handleBuyNow = () => {
-    handleAddToCart();
-    setTimeout(() => navigate("/cart"), 400);
+    const { id: prodId, image: img, title: t, rating: r, price: p } = Prod;
+    navigate("/order", { state: { buyNowItem: { id: prodId, image: img, title: t, rating: r, price: p } } });
   };
 
   /* ── Shared: Image Gallery Block ── */

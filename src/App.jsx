@@ -5,6 +5,7 @@ import ProductPage from "./components/ProductPage";
 import Cart from "./components/Cart";
 import Footer from "./components/Footer";
 import MobileBottomNav from "./components/MobileBottomNav";
+import OrderPage from "./components/OrderPage";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ const approuter = createHashRouter([
       { path: "/", element: <Body /> },
       { path: "/product/:id", element: <ProductPage /> },
       { path: "/cart", element: <Cart /> },
+      { path: "/order", element: <OrderPage /> },
     ],
   },
 ]);
