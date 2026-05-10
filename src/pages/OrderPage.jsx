@@ -184,6 +184,7 @@ const OrderPage = () => {
               Continue Shopping
             </button>
             <button
+              onClick={() => navigate("/track-order")}
               className={`flex-1 py-4 font-black rounded-2xl text-sm transition-all duration-300 active:scale-95 border ${isDark ? "border-white/10 text-white hover:bg-white/5" : "border-gray-200 text-gray-700 hover:bg-gray-50"}`}
             >
               Track Order

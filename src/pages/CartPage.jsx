@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { ShoppingBag, ArrowRight, Trash2, Home, Star, Bookmark, Zap, Tag } from "lucide-react";
-import CartProduct from "./CartProduct";
+import CartProduct from "../components/cart/CartProduct";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart, deleteItem } from "../utils/CartSlice";
 import { useNavigate } from "react-router-dom";

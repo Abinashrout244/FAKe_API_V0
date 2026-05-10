@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { SlidersHorizontal, Check } from "lucide-react";
-import { ProductContext } from "../utils/ProductContext";
+import { ProductContext } from "../../utils/ProductContext";
 
 const FilterSection = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -127,3 +127,4 @@ const FilterSection = () => {
 };
 
 export default FilterSection;
+

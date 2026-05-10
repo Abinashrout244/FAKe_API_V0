@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import Main from "./Main";
+import Main from "../components/home/Main";
 import { ProductContext } from "../utils/ProductContext";
 
 const Body = () => {

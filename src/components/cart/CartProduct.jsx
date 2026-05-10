@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
 import { Trash2, Plus, Minus } from "lucide-react";
 import { useDispatch } from "react-redux";
-import { addItem, removeItem } from "../utils/CartSlice";
-import { ProductContext } from "../utils/ProductContext";
+import { addItem, removeItem } from "../../utils/CartSlice";
+import { ProductContext } from "../../utils/ProductContext";
 
 const CartProduct = ({ title, price, image, id, quantity }) => {
   const { theme } = useContext(ProductContext);
@@ -152,3 +152,4 @@ const CartProduct = ({ title, price, image, id, quantity }) => {
 };
 
 export default CartProduct;
+

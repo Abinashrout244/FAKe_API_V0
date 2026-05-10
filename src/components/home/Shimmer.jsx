@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ProductContext } from "../utils/ProductContext";
+import { ProductContext } from "../../utils/ProductContext";
 
 const Shimmer = () => {
   const { theme } = useContext(ProductContext);
@@ -44,4 +44,5 @@ const Shimmer = () => {
 };
 
 export default Shimmer;
+
 

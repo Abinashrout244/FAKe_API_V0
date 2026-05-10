@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import ProductCard from "./ProductCard";
-import { ProductContext } from "../utils/ProductContext";
+import { ProductContext } from "../../utils/ProductContext";
 import Shimmer from "./Shimmer";
 import Button from "./Button";
 import FilterSection from "./FilterSection";
@@ -93,3 +93,4 @@ const Main = () => {
 };
 
 export default Main;
+

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { ProductContext } from "../utils/ProductContext";
+import { ProductContext } from "../../utils/ProductContext";
 import { Star, Eye } from "lucide-react";
 
 const ProductCard = ({
@@ -141,3 +141,4 @@ const ProductCard = ({
 };
 
 export default ProductCard;
+

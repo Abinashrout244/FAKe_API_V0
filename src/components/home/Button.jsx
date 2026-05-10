@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ProductContext } from "../utils/ProductContext";
+import { ProductContext } from "../../utils/ProductContext";
 
 const categories = [
   {

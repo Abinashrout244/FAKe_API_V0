@@ -1,11 +1,12 @@
-import Header from "./components/Header";
-import Body from "./components/Body";
+import Header from "./layout/Header";
+import HomePage from "./pages/HomePage";
 import { createHashRouter, Outlet, RouterProvider } from "react-router-dom";
-import ProductPage from "./components/ProductPage";
-import Cart from "./components/Cart";
-import Footer from "./components/Footer";
-import MobileBottomNav from "./components/MobileBottomNav";
-import OrderPage from "./components/OrderPage";
+import ProductPage from "./pages/ProductPage";
+import CartPage from "./pages/CartPage";
+import Footer from "./layout/Footer";
+import MobileBottomNav from "./layout/MobileBottomNav";
+import OrderPage from "./pages/OrderPage";
+import TrackOrderPage from "./pages/TrackOrderPage";
 
 function App() {
   return (
@@ -23,10 +24,11 @@ const approuter = createHashRouter([
     path: "/",
     element: <App />,
     children: [
-      { path: "/", element: <Body /> },
+      { path: "/", element: <HomePage /> },
       { path: "/product/:id", element: <ProductPage /> },
-      { path: "/cart", element: <Cart /> },
+      { path: "/cart", element: <CartPage /> },
       { path: "/order", element: <OrderPage /> },
+      { path: "/track-order", element: <TrackOrderPage /> },
     ],
   },
 ]);

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useContext } from "react";
-import { ProductContext } from "../utils/ProductContext";
+import { ProductContext } from "../../utils/ProductContext";
 
 const banners = [
   {
@@ -176,3 +176,4 @@ const FeaturedCarousel = () => {
 };
 
 export default FeaturedCarousel;
+
