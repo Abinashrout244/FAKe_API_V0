@@ -71,14 +71,51 @@ const Header = () => {
         }`}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between h-16 md:h-20 px-4 md:px-12">
-          {/* ── Logo ── */}
+          {/* ── Premium Logo ── */}
           <NavLink
             to="/"
-            className={`text-2xl md:text-3xl font-syne font-bold tracking-tighter transition-colors duration-300 flex-shrink-0 ${
-              isDark ? "text-emerald-400" : "text-emerald-700"
-            }`}
+            className="flex items-center gap-2.5 flex-shrink-0 group"
           >
-            MY<span className="font-light italic">SHOP</span>
+            {/* Icon Badge */}
+            <div className={`relative w-9 h-9 md:w-10 md:h-10 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-500 group-hover:scale-110 group-hover:rotate-[-4deg] ${
+              isDark
+                ? "bg-gradient-to-br from-emerald-400 to-teal-600 shadow-lg shadow-emerald-500/30"
+                : "bg-gradient-to-br from-emerald-500 to-teal-700 shadow-lg shadow-emerald-400/40"
+            }`}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M3 6h18" stroke="white" strokeWidth="1.8" strokeLinecap="round"/>
+                <path d="M16 10a4 4 0 01-8 0" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              {/* Gloss overlay */}
+              <div className="absolute inset-0 rounded-xl bg-gradient-to-b from-white/20 to-transparent pointer-events-none" />
+            </div>
+
+            {/* Wordmark */}
+            <div className="flex flex-col leading-none">
+              <div className="flex items-baseline gap-1">
+                <span className={`text-xl md:text-2xl font-black tracking-tight font-syne transition-colors duration-300 ${
+                  isDark ? "text-white" : "text-gray-900"
+                }`}>
+                  FAKe
+                </span>
+                <span className={`text-xl md:text-2xl font-light tracking-tight font-syne transition-colors duration-300 ${
+                  isDark ? "text-emerald-400" : "text-emerald-600"
+                }`}>
+                  shop
+                </span>
+              </div>
+              <div className="flex items-center gap-1 mt-[-2px]">
+                <div className={`h-[2px] flex-1 rounded-full bg-gradient-to-r from-emerald-400 to-teal-500 transition-all duration-500 ${
+                  isDark ? "opacity-80" : "opacity-60"
+                } group-hover:opacity-100`} />
+                <span className={`text-[7px] font-black tracking-[2.5px] uppercase transition-colors duration-300 ${
+                  isDark ? "text-emerald-500" : "text-emerald-600"
+                }`}>
+                  STORE
+                </span>
+              </div>
+            </div>
           </NavLink>
 
           {/* ── Right Side Actions ── */}

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearCart, deleteItem } from "../utils/CartSlice";
 import { useNavigate } from "react-router-dom";
 import { ProductContext } from "../utils/ProductContext";
+import { Link } from "react-router-dom";
 
 /* ─── helpers ─────────────────────────────────────────────── */
 const dealTag = (price) => {
@@ -254,10 +255,10 @@ const Cart = () => {
             </div>
 
             {/* Place Order */}
-            <button className="flex-shrink-0 bg-amber-400 hover:bg-amber-500 active:scale-95 text-gray-900 font-black text-[13px] px-7 py-3.5 rounded-xl transition-all duration-200 shadow-lg shadow-amber-400/30 flex items-center gap-2">
+            <Link to="/order"><button className="flex-shrink-0 bg-amber-400 hover:bg-amber-500 active:scale-95 text-gray-900 font-black text-[13px] px-7 py-3.5 rounded-xl transition-all duration-200 shadow-lg shadow-amber-400/30 flex items-center gap-2">
               Place Order
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </button></Link>
           </div>
         </div>
       )}
@@ -382,7 +383,7 @@ const Cart = () => {
                       Continue Exploring
                     </span>
                   </button>
-                  <button
+                <Link to="/order">  <button
                     className={`px-12 py-5 rounded-2xl flex items-center justify-center gap-4 transition-all duration-500 group active:scale-95 ${
                       isDark
                         ? "bg-emerald-500 text-black"
@@ -393,7 +394,7 @@ const Cart = () => {
                       Proceed to Checkout
                     </span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform duration-300" />
-                  </button>
+                  </button></Link>
                 </div>
               </div>
             </div>
