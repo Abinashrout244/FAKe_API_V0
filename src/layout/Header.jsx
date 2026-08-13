@@ -1,5 +1,5 @@
 import React, { useContext, useState, useRef, useEffect } from "react";
-import { ShoppingCart, Search, X, Sun, Moon } from "lucide-react";
+import { ShoppingCart, Search, X, Sun, Moon, QrCode } from "lucide-react";
 import { ProductContext } from "../utils/ProductContext";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -120,6 +120,19 @@ const Header = () => {
 
           {/* ── Right Side Actions ── */}
           <div className="flex items-center gap-3 md:gap-5">
+            {/* Create QR */}
+            <NavLink
+              to="/qr"
+              className={`flex items-center gap-2 rounded-xl border px-2.5 py-2 md:px-3 md:py-2.5 transition-all duration-300 hover:-translate-y-0.5 active:scale-95 ${
+                isDark
+                  ? "border-emerald-900/40 bg-emerald-950/40 text-emerald-400 hover:border-emerald-500/60"
+                  : "border-emerald-100 bg-emerald-50 text-emerald-600 hover:border-emerald-300"
+              }`}
+              aria-label="Create QR code"
+            >
+              <QrCode className="h-4 w-4 md:h-5 md:w-5" />
+              <span className="hidden sm:inline text-xs font-bold md:text-sm">Create QR</span>
+            </NavLink>
 
             {/* ══ Desktop/Tablet Search (md+) ══ */}
             <div

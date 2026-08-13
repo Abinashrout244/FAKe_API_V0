@@ -7,6 +7,7 @@ import Footer from "./layout/Footer";
 import MobileBottomNav from "./layout/MobileBottomNav";
 import OrderPage from "./pages/OrderPage";
 import TrackOrderPage from "./pages/TrackOrderPage";
+import ShowQR from "./components/home/ShowQR";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ const approuter = createHashRouter([
       { path: "/cart", element: <CartPage /> },
       { path: "/order", element: <OrderPage /> },
       { path: "/track-order", element: <TrackOrderPage /> },
+      { path: "/qr", element: <ShowQR /> },
     ],
   },
 ]);
