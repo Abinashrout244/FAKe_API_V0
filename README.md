@@ -44,13 +44,17 @@ Open the local development URL shown in the terminal after running the app. Brow
 ## Folder Structure
 
 ```
-src/
-  components/
-  utils/
-  assets/
-  App.jsx
-  main.jsx
-  index.css
+.
+├─ cart
+│  └─ CartProduct.jsx
+└─ home
+   ├─ Button.jsx
+   ├─ FeaturedCarousel.jsx
+   ├─ FilterSection.jsx
+   ├─ Main.jsx
+   ├─ ProductCard.jsx
+   ├─ Shimmer.jsx
+   └─ ShowQR.jsx
 ```
 
 ## Screenshots
