@@ -9,28 +9,28 @@ const categories = [
     img: "https://cdn-icons-png.flaticon.com/512/1077/1077114.png",
   },
   {
-    id: "men's clothing",
-    label: "Fashion",
-    emoji: "👗",
-    img: "https://cdn-icons-png.flaticon.com/512/892/892458.png",
+    id: "beauty",
+    label: "Beauty",
+    emoji: "💄",
+    img: "https://cdn-icons-png.flaticon.com/512/3163/3163195.png",
   },
   {
-    id: "electronics",
-    label: "Mobiles",
-    emoji: "📱",
-    img: "https://cdn-icons-png.flaticon.com/512/1041/1041886.png",
+    id: "fragrances",
+    label: "Fragrances",
+    emoji: "🌸",
+    img: "https://cdn-icons-png.flaticon.com/512/1533/1533921.png",
   },
   {
-    id: "jewelery",
-    label: "Jewellery",
-    emoji: "💎",
-    img: "https://cdn-icons-png.flaticon.com/512/833/833472.png",
+    id: "furniture",
+    label: "Furniture",
+    emoji: "🛋️",
+    img: "https://cdn-icons-png.flaticon.com/512/2662/2662503.png",
   },
   {
-    id: "women's clothing",
-    label: "Women",
-    emoji: "👒",
-    img: "https://cdn-icons-png.flaticon.com/512/4140/4140048.png",
+    id: "groceries",
+    label: "Groceries",
+    emoji: "🛒",
+    img: "https://cdn-icons-png.flaticon.com/512/3081/3081840.png",
   },
 ];
 
@@ -60,8 +60,8 @@ const Button = () => {
                       ? "bg-blue-500/20 ring-2 ring-blue-400 scale-105 shadow-[0_0_20px_rgba(59,130,246,0.35)]"
                       : "bg-blue-50 ring-2 ring-blue-500 scale-105 shadow-[0_8px_24px_rgba(59,130,246,0.2)]"
                     : isDark
-                    ? "bg-white/5 ring-1 ring-white/10 hover:ring-blue-500/30 hover:scale-105"
-                    : "bg-white ring-1 ring-emerald-100 hover:ring-blue-200 hover:scale-105 shadow-sm"
+                      ? "bg-white/5 ring-1 ring-white/10 hover:ring-blue-500/30 hover:scale-105"
+                      : "bg-white ring-1 ring-emerald-100 hover:ring-blue-200 hover:scale-105 shadow-sm"
                 }`}
               >
                 {/* Animated glow pulse on active */}
@@ -98,8 +98,8 @@ const Button = () => {
                       ? "text-blue-400"
                       : "text-blue-600"
                     : isDark
-                    ? "text-white/35 group-hover:text-blue-400/70"
-                    : "text-emerald-900/40 group-hover:text-blue-600/70"
+                      ? "text-white/35 group-hover:text-blue-400/70"
+                      : "text-emerald-900/40 group-hover:text-blue-600/70"
                 }`}
               >
                 {cat.label}

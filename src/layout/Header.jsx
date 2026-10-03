@@ -49,10 +49,22 @@ const Header = () => {
   const cartItems = useSelector((store) => store?.cart?.items);
   const cartCount = cartItems.reduce(
     (sum, item) => sum + (item.quantity || 0),
-    0
+    0,
   );
 
-  const normalizedSearch = search.trim().toLowerCase();
+  const [debouncedSearch, setDebouncedSearch] = useState("");
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearch(search);
+    }, 500);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [search]);
+
+  const normalizedSearch = debouncedSearch.trim().toLowerCase();
   const filteredSuggestions = normalizedSearch
     ? products
         .filter((p) => p.title.toLowerCase().includes(normalizedSearch))
@@ -77,15 +89,40 @@ const Header = () => {
             className="flex items-center gap-2.5 flex-shrink-0 group"
           >
             {/* Icon Badge */}
-            <div className={`relative w-9 h-9 md:w-10 md:h-10 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-500 group-hover:scale-110 group-hover:rotate-[-4deg] ${
-              isDark
-                ? "bg-gradient-to-br from-emerald-400 to-teal-600 shadow-lg shadow-emerald-500/30"
-                : "bg-gradient-to-br from-emerald-500 to-teal-700 shadow-lg shadow-emerald-400/40"
-            }`}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M3 6h18" stroke="white" strokeWidth="1.8" strokeLinecap="round"/>
-                <path d="M16 10a4 4 0 01-8 0" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+            <div
+              className={`relative w-9 h-9 md:w-10 md:h-10 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-500 group-hover:scale-110 group-hover:rotate-[-4deg] ${
+                isDark
+                  ? "bg-gradient-to-br from-emerald-400 to-teal-600 shadow-lg shadow-emerald-500/30"
+                  : "bg-gradient-to-br from-emerald-500 to-teal-700 shadow-lg shadow-emerald-400/40"
+              }`}
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"
+                  stroke="white"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M3 6h18"
+                  stroke="white"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                />
+                <path
+                  d="M16 10a4 4 0 01-8 0"
+                  stroke="white"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
               </svg>
               {/* Gloss overlay */}
               <div className="absolute inset-0 rounded-xl bg-gradient-to-b from-white/20 to-transparent pointer-events-none" />
@@ -94,24 +131,32 @@ const Header = () => {
             {/* Wordmark */}
             <div className="flex flex-col leading-none">
               <div className="flex items-baseline gap-1">
-                <span className={`text-xl md:text-2xl font-black tracking-tight font-syne transition-colors duration-300 ${
-                  isDark ? "text-white" : "text-gray-900"
-                }`}>
+                <span
+                  className={`text-xl md:text-2xl font-black tracking-tight font-syne transition-colors duration-300 ${
+                    isDark ? "text-white" : "text-gray-900"
+                  }`}
+                >
                   FAKe
                 </span>
-                <span className={`text-xl md:text-2xl font-light tracking-tight font-syne transition-colors duration-300 ${
-                  isDark ? "text-emerald-400" : "text-emerald-600"
-                }`}>
+                <span
+                  className={`text-xl md:text-2xl font-light tracking-tight font-syne transition-colors duration-300 ${
+                    isDark ? "text-emerald-400" : "text-emerald-600"
+                  }`}
+                >
                   shop
                 </span>
               </div>
               <div className="flex items-center gap-1 mt-[-2px]">
-                <div className={`h-[2px] flex-1 rounded-full bg-gradient-to-r from-emerald-400 to-teal-500 transition-all duration-500 ${
-                  isDark ? "opacity-80" : "opacity-60"
-                } group-hover:opacity-100`} />
-                <span className={`text-[7px] font-black tracking-[2.5px] uppercase transition-colors duration-300 ${
-                  isDark ? "text-emerald-500" : "text-emerald-600"
-                }`}>
+                <div
+                  className={`h-[2px] flex-1 rounded-full bg-gradient-to-r from-emerald-400 to-teal-500 transition-all duration-500 ${
+                    isDark ? "opacity-80" : "opacity-60"
+                  } group-hover:opacity-100`}
+                />
+                <span
+                  className={`text-[7px] font-black tracking-[2.5px] uppercase transition-colors duration-300 ${
+                    isDark ? "text-emerald-500" : "text-emerald-600"
+                  }`}
+                >
                   STORE
                 </span>
               </div>
@@ -120,7 +165,6 @@ const Header = () => {
 
           {/* ── Right Side Actions ── */}
           <div className="flex items-center gap-3 md:gap-5">
-
             {/* ══ Desktop/Tablet Search (md+) ══ */}
             <div
               ref={searchRef}
@@ -129,7 +173,9 @@ const Header = () => {
               {/* Sliding search input */}
               <div
                 className={`flex items-center overflow-hidden rounded-2xl border transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] ${
-                  searchOpen ? "w-72 lg:w-96 opacity-100" : "w-0 opacity-0 border-transparent"
+                  searchOpen
+                    ? "w-72 lg:w-96 opacity-100"
+                    : "w-0 opacity-0 border-transparent"
                 } ${
                   isDark
                     ? "bg-black/40 border-emerald-900/40 focus-within:border-emerald-500/60"
@@ -185,8 +231,8 @@ const Header = () => {
                       ? "bg-emerald-500/20 border-emerald-500/50 text-emerald-300"
                       : "bg-emerald-100 border-emerald-300 text-emerald-700"
                     : isDark
-                    ? "bg-emerald-950/40 border-emerald-900/40 text-emerald-400 hover:border-emerald-500/60"
-                    : "bg-emerald-50 border-emerald-100 text-emerald-600 hover:border-emerald-300"
+                      ? "bg-emerald-950/40 border-emerald-900/40 text-emerald-400 hover:border-emerald-500/60"
+                      : "bg-emerald-50 border-emerald-100 text-emerald-600 hover:border-emerald-300"
                 }`}
               >
                 {searchOpen ? (
@@ -206,7 +252,9 @@ const Header = () => {
                   }`}
                 >
                   <div className="p-2">
-                    <p className={`px-4 py-2 text-[8px] font-black tracking-[3px] uppercase opacity-40 mb-1 ${isDark ? "text-emerald-500" : "text-emerald-700"}`}>
+                    <p
+                      className={`px-4 py-2 text-[8px] font-black tracking-[3px] uppercase opacity-40 mb-1 ${isDark ? "text-emerald-500" : "text-emerald-700"}`}
+                    >
                       Suggested
                     </p>
                     {filteredSuggestions.length > 0 ? (
@@ -220,22 +268,34 @@ const Header = () => {
                             setSearchOpen(false);
                           }}
                           className={`flex items-center gap-3 px-4 py-3 rounded-xl cursor-pointer transition-all duration-200 group ${
-                            isDark ? "hover:bg-emerald-500/10" : "hover:bg-emerald-50"
+                            isDark
+                              ? "hover:bg-emerald-500/10"
+                              : "hover:bg-emerald-50"
                           }`}
                         >
                           <div className="w-9 h-9 rounded-lg overflow-hidden bg-white p-1 flex-shrink-0 group-hover:scale-105 transition-transform duration-300">
-                            <img src={item.image} alt={item.title} className="w-full h-full object-contain" />
+                            <img
+                              src={item.images?.[0]}
+                              alt={item.title}
+                              className="w-full h-full object-contain"
+                            />
                           </div>
                           <div className="flex flex-col min-w-0">
-                            <span className={`text-[12px] font-medium truncate ${isDark ? "text-white group-hover:text-emerald-300" : "text-emerald-950 group-hover:text-emerald-600"}`}>
+                            <span
+                              className={`text-[12px] font-medium truncate ${isDark ? "text-white group-hover:text-emerald-300" : "text-emerald-950 group-hover:text-emerald-600"}`}
+                            >
                               {item.title}
                             </span>
-                            <span className="text-[10px] font-bold text-emerald-500">₹{item.price}</span>
+                            <span className="text-[10px] font-bold text-emerald-500">
+                              ₹{item.price}
+                            </span>
                           </div>
                         </div>
                       ))
                     ) : (
-                      <p className={`px-4 py-3 text-sm ${isDark ? "text-emerald-300/70" : "text-emerald-700/70"}`}>
+                      <p
+                        className={`px-4 py-3 text-sm ${isDark ? "text-emerald-300/70" : "text-emerald-700/70"}`}
+                      >
                         No matching products found.
                       </p>
                     )}
@@ -253,7 +313,11 @@ const Header = () => {
                   : "bg-emerald-50 border-emerald-100 text-emerald-600 hover:border-emerald-300"
               }`}
             >
-              {theme === "Light" ? <Moon className="w-4 h-4 md:w-5 md:h-5" /> : <Sun className="w-4 h-4 md:w-5 md:h-5" />}
+              {theme === "Light" ? (
+                <Moon className="w-4 h-4 md:w-5 md:h-5" />
+              ) : (
+                <Sun className="w-4 h-4 md:w-5 md:h-5" />
+              )}
             </button>
 
             {/* Cart — desktop only in header */}

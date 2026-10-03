@@ -5,7 +5,7 @@ export const ProductContext = createContext();
 const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [filterProducts, setFilterProducts] = useState([]);
-  const[filterName,setFilterName] = useState("Newest");
+  const [filterName, setFilterName] = useState("Newest");
   const [theme, setTheme] = useState("Dark");
   const [category, setCategory] = useState("all");
   useEffect(() => {
@@ -13,12 +13,12 @@ const ProductProvider = ({ children }) => {
   }, []);
 
   const getProducts = async () => {
-    const data = await fetch("https://fakestoreapi.com/products");
+    const data = await fetch("https://dummyjson.com/products");
     const json = await data.json();
-    console.log(json);
+    console.log(json.products);
 
-    setProducts(json);
-    setFilterProducts(json);
+    setProducts(json?.products);
+    setFilterProducts(json?.products);
   };
   const handleSearch = (search) => {
     const result = products.filter((text) => {
@@ -39,34 +39,30 @@ const ProductProvider = ({ children }) => {
       setFilterProducts(products);
     } else {
       const filtered = products.filter(
-        (item) => item.category === seelctcatagory
+        (item) => item.category === seelctcatagory,
       );
       setFilterProducts(filtered);
     }
   };
 
-
-
-const sortedProducts = [...filterProducts].sort((a, b) => {
-  if (filterName === "A-Z") {
-    return a.title.localeCompare(b.title);
-  }
-  if (filterName === "Z-A") {
-    return b.title.localeCompare(a.title);
-  }
-  if (filterName === "Price: Low to High") {
-    return a.price - b.price;
-  }
-  if (filterName === "Price: High to Low") {
-    return b.price - a.price;
-  }
-  if (filterName === "Rating") {
-    return b.rating.rate - a.rating.rate;
-  }
-  return 0; // default (Newest)
-});
-
-
+  const sortedProducts = [...filterProducts].sort((a, b) => {
+    if (filterName === "A-Z") {
+      return a.title.localeCompare(b.title);
+    }
+    if (filterName === "Z-A") {
+      return b.title.localeCompare(a.title);
+    }
+    if (filterName === "Price: Low to High") {
+      return a.price - b.price;
+    }
+    if (filterName === "Price: High to Low") {
+      return b.price - a.price;
+    }
+    if (filterName === "Rating") {
+      return b.rating.rate - a.rating.rate;
+    }
+    return 0; // default (Newest)
+  });
 
   return (
     <ProductContext.Provider

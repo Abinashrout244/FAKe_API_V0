@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { addItem, removeItem } from "../../utils/CartSlice";
 import { ProductContext } from "../../utils/ProductContext";
 
-const CartProduct = ({ title, price, image, id, quantity }) => {
+const CartProduct = ({ title, price, images, id, quantity }) => {
   const { theme } = useContext(ProductContext);
   const dispatch = useDispatch();
   const isDark = theme === "Dark";
@@ -17,9 +17,14 @@ const CartProduct = ({ title, price, image, id, quantity }) => {
       setShowToast(false);
     }, 2200);
   };
+  console.log("CART PRODUCT:", {
+    id,
+    title,
+    images,
+  });
 
   const increment = () => {
-    dispatch(addItem({ id, title, image, price }));
+    dispatch(addItem({ id, title, images, price }));
   };
 
   const decrement = () => {
@@ -42,7 +47,7 @@ const CartProduct = ({ title, price, image, id, quantity }) => {
           }`}
         >
           <img
-            src={image}
+            src={images?.[0]}
             alt={title}
             className="w-full h-full object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-110"
           />
@@ -152,4 +157,3 @@ const CartProduct = ({ title, price, image, id, quantity }) => {
 };
 
 export default CartProduct;
-
