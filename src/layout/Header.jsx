@@ -1,5 +1,5 @@
 import React, { useContext, useState, useRef, useEffect } from "react";
-import { ShoppingCart, Search, X, Sun, Moon } from "lucide-react";
+import { ShoppingCart, Search, X, Sun, Moon, QrCode } from "lucide-react";
 import { ProductContext } from "../utils/ProductContext";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
